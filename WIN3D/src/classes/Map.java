@@ -1,10 +1,10 @@
 package classes;
 import java.util.*;
-//teets
+
 public class Map {
 	ArrayList<Wall> wallList = new ArrayList<Wall>();
 	ArrayList<GameObjects> objectList = new ArrayList<GameObjects>();
-	Player player;
+	static Player player;
 		public Map(){
 			
 }
