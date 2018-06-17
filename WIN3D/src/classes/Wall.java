@@ -1,3 +1,4 @@
+package classes;
 public class Wall {
 Vector pos1;
 Vector pos2;

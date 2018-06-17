@@ -1,4 +1,4 @@
-
+package classes;
 public class Player extends gameObjects{
 	public Player(){
 		//SAAAAAAAS
