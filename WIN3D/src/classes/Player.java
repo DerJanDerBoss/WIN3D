@@ -1,7 +1,7 @@
 
 public class Player extends gameObjects{
 	public Player(){
-		
+		//SAAAAAAAS
 	}
 
 	public void move(){
