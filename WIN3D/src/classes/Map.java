@@ -1,5 +1,5 @@
 import java.util.*;
-
+//teets
 public class Map {
 	ArrayList<Wall> wallList = new ArrayList<Wall>();
 	ArrayList<gameObjects> objectList = new ArrayList<gameObjects>();
