@@ -14,9 +14,8 @@ public class FirstWindow extends JFrame {
 
 	private JPanel contentPane;
 
-	/** in workspaces
+	/** 
 	 * Launch the application.
-	 * was passiert eigentlichss
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -31,9 +30,8 @@ public class FirstWindow extends JFrame {
 		});
 	}
 
-	/**in random
+	/**
 	 * Create the frames.
-	 * jetztaaber tolles ding
 	 */
 	public FirstWindow() {
 		setTitle("Tolles Ding");
