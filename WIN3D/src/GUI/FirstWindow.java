@@ -16,7 +16,7 @@ public class FirstWindow extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * was passiert eigentlichs
+	 * was passiert eigentlichss
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
