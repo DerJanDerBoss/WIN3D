@@ -15,5 +15,21 @@ public class Vector {
 		y += Math.sin(degrees / 360 * 2 * Math.PI);
 		return new Vector(x, y);
 	}
-
+	public void add(Vector vector)
+	{
+		x += vector.x;
+		y += vector.y;
+	}
+	
+	public void subtract(Vector vector)
+	{
+		x -= vector.x;
+		y -= vector.y;
+	}
+	
+	public void multiply(double multiplier)
+	{
+		x *= multiplier;
+		y *= multiplier;
+	}
 }
