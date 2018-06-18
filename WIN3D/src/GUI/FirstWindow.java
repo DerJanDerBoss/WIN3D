@@ -14,7 +14,7 @@ public class FirstWindow extends JFrame {
 
 	private JPanel contentPane;
 
-	/** in workspace
+	/** in workspaces
 	 * Launch the application.
 	 * was passiert eigentlichss
 	 */
