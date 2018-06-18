@@ -33,6 +33,7 @@ public class FirstWindow extends JFrame {
 
 	/**
 	 * Create the frames.
+	 * jetzta
 	 */
 	public FirstWindow() {
 		setTitle("Tolles Ding");
