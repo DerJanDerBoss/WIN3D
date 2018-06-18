@@ -31,7 +31,7 @@ public class FirstWindow extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the frames.
 	 */
 	public FirstWindow() {
 		setTitle("Tolles Ding");
