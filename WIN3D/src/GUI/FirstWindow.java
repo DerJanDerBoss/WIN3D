@@ -31,9 +31,9 @@ public class FirstWindow extends JFrame {
 		});
 	}
 
-	/**
+	/**in random
 	 * Create the frames.
-	 * jetzta
+	 * jetztaaber tolles ding
 	 */
 	public FirstWindow() {
 		setTitle("Tolles Ding");
