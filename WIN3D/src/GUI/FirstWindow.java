@@ -34,6 +34,7 @@ public class FirstWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public FirstWindow() {
+		setTitle("Tolles Ding");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 961, 686);
 		contentPane = new JPanel();
