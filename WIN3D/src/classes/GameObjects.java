@@ -1,4 +1,4 @@
-package classes;
+package classes;//tests
 
 public class GameObjects {
 Vector pos;
