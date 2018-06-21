@@ -13,12 +13,6 @@ public void setX(double pX){
 public void setY(double pY){
 	pY = y;
 }
-	public double x;
-	public double y;
-	public Vector(double pX, double pY){
-		x = pX;
-		y = pY;
-	}
 	public static Vector rotateVector(Vector vector,  int degrees)
 	{
 		double x = vector.x;
@@ -44,5 +38,4 @@ public void setY(double pY){
 		x *= multiplier;
 		y *= multiplier;
 	}
->>>>>>> branch 'master' of https://github.com/DerJanDerBoss/WIN3D
 }
