@@ -6,4 +6,9 @@ public class Renderer {
 	double fieldOfViewDegrees;
 	int screenHeight;
 	int screenWidth;
-}//blabla
+	Map map;
+	public void renderImmage()
+	{
+		
+	}
+}
