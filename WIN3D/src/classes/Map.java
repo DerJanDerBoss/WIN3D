@@ -2,8 +2,8 @@ package classes;
 import java.util.*;
 
 public class Map {
-	ArrayList<Wall> wallList = new ArrayList<Wall>();
-	ArrayList<GameObjects> objectList = new ArrayList<GameObjects>();
+	public ArrayList<Wall> wallList = new ArrayList<Wall>();
+	public ArrayList<GameObjects> objectList = new ArrayList<GameObjects>();
 	static Player player;
 		public Map(){
 			

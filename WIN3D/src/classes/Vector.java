@@ -1,19 +1,13 @@
 package classes;
 
 public class Vector {
-public double x;
-public double y;
-public Vector(double pX, double pY){
-	x = pX;
-	y = pY;
-}
-public void setX(double pX){
-	pX = x;
-}
-public void setY(double pY){
-	pY = y;
-}
-	public static Vector rotateVector(Vector vector,  int degrees)
+	public double x;
+	public double y;
+	public Vector(double pX, double pY){
+		x = pX;
+		y = pY;
+	}
+	public static Vector rotateVector(Vector vector,  double degrees)
 	{
 		double x = vector.x;
 		double y = vector.y;
@@ -21,21 +15,23 @@ public void setY(double pY){
 		y += Math.sin(degrees / 360 * 2 * Math.PI);
 		return new Vector(x, y);
 	}
-	public void add(Vector vector)
+	public static Vector add(Vector vector1, Vector vector2)
 	{
-		x += vector.x;
-		y += vector.y;
+		return new Vector(vector1.x + vector2.x, vector1.y + vector2.y);
 	}
 	
-	public void subtract(Vector vector)
+	public static Vector subtract(Vector vector1, Vector vector2)
 	{
-		x -= vector.x;
-		y -= vector.y;
+		return new Vector(vector1.x - vector2.x, vector1.y - vector2.y);
 	}
 	
-	public void multiply(double multiplier)
+	public static Vector multiply(Vector vector, double multiplier)
 	{
-		x *= multiplier;
-		y *= multiplier;
+		return new Vector(vector.x * multiplier, vector.y * multiplier);
+	}
+	
+	public double getLength()
+	{
+		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	}
 }
