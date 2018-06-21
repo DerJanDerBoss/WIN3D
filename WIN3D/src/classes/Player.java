@@ -9,6 +9,7 @@ public class Player extends GameObjects implements KeyListener{
 
 	public void move(){
 		movePos(new Vector(0, 1));
+		System.out.println("Position: x = "+pos.x+" y = "+pos.y);
 	}
 	public void rotate(float value){
 		
