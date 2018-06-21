@@ -2,6 +2,9 @@ package classes;//tests
 
 public class GameObjects {
 Vector pos;
+public GameObjects(){
+	pos = new Vector(0, 0);
+}
 
 public Vector getPos(){
 	return pos;
