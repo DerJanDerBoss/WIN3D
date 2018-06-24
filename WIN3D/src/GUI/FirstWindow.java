@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class FirstWindow extends JFrame {
 
@@ -43,7 +44,8 @@ public class FirstWindow extends JFrame {
 	{
 		
         
-		setTitle("Tolles Ding");
+		setTitle("WIN 3D");
+		/*
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 961, 686);
 		contentPane = new JPanel();
@@ -51,25 +53,39 @@ public class FirstWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		*/
 		
-		JPanel contentPane = new JPanel(); 
-		getContentPane().add(contentPane);
+		
+		//Erstellung der Benutzeroberfläche
+		
+		JPanel field = new JPanel(); 
+		getContentPane().add(field);
         setSize(450,450);
+        field.setBackground(Color.BLUE);
         
-		JButton button =new JButton("Drück mich!");
-		button.addActionListener(new ActionListener() {
+        
+        //Knopf
+        
+		JButton button = new JButton("Drück mich!");
+        field.add(button);
+        
+		button.addActionListener(new ActionListener() 
+		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				contentPane.repaint();
+				field.repaint();
 			}
 		});
-        contentPane.add(button);
 	}
-		public void paint(Graphics g) {
+	
+	// Methode zum zeichnen der Linie
+	
+		public void paint(Graphics g) 
+		{
 	        Graphics2D g2 = (Graphics2D) g;
 	        Line2D lin = new Line2D.Float(100, 100, 250, 260);
 	        g2.draw(lin);
-	}
+		}
 	
 
 }
