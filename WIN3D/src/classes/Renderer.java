@@ -1,8 +1,6 @@
 package classes;
 import java.util.*;
 
-import GUI.FirstWindow;
-
 public class Renderer {
 	Vector position;
 	double rotation;
@@ -63,7 +61,7 @@ public class Renderer {
 					}
 				}
 				renderedWallDistances[i] = nearestIntersection;
-				FirstWindow.drawVerticalLine(i, (int)(screenHeight / nearestIntersection));
+				MainGUI.drawVerticalLine(i, (int)(screenHeight / nearestIntersection));
 			}
 		}
 	}
