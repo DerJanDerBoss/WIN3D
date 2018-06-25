@@ -61,6 +61,7 @@ public class Renderer {
 					}
 				}
 				renderedWallDistances[i] = nearestIntersection;
+				MainGUI.drawVerticalLine(i, (int)(screenHeight / nearestIntersection));
 			}
 		}
 	}
