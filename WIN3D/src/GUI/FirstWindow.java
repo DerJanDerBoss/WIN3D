@@ -73,6 +73,12 @@ public class FirstWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				field.repaint();
+				
+				/*
+				field.removeAll();
+				field.revalidate();
+				field.repaint();
+				*/
 			}
 		});
 	}
