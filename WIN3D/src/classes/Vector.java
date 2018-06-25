@@ -1,12 +1,15 @@
 package classes;
 
 public class Vector {
+	
 	public double x;
 	public double y;
+	
 	public Vector(double pX, double pY){
 		x = pX;
 		y = pY;
 	}
+	
 	public static Vector rotateVector(Vector vector,  double degrees)
 	{
 		double x = vector.x;
@@ -15,6 +18,7 @@ public class Vector {
 		y += Math.sin(degrees / 360 * 2 * Math.PI);
 		return new Vector(x, y);
 	}
+	
 	public static Vector add(Vector vector1, Vector vector2)
 	{
 		return new Vector(vector1.x + vector2.x, vector1.y + vector2.y);
@@ -29,9 +33,11 @@ public class Vector {
 	{
 		return new Vector(vector.x * multiplier, vector.y * multiplier);
 	}
+	
 	public static double[] checkForIntersections(Vector pos1, Vector dir1, Vector pos2, Vector dir2)
 	{
 		double[] returnValue = new double[3];
+		
 		//check if directions are parralel and don't have a length of 0
 		if(dir1.x/dir2.x != dir1.y/dir2.y && dir1.getLength() != 0 && dir2.getLength() != 0)
 		{
