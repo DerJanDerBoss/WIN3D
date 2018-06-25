@@ -76,6 +76,12 @@ public class FirstWindow extends JFrame {
 				i += 100;
 				repaint();
 				field.repaint();
+				
+				/*
+				field.removeAll();
+				field.revalidate();
+				field.repaint();
+				*/
 			}
 		});
 	}
