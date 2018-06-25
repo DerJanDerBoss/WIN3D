@@ -2,14 +2,14 @@ package classes;
 import java.util.*;
 
 public class Renderer {
-	Vector position;
+	Vector position = new Vector (0, 0);
 	double rotation;
 	GameObjects attachedGameObject;
-	double fieldOfViewDegrees;
+	double fieldOfViewDegrees = 90;
 	double viewDistance;
 	int screenHeight;
 	int screenWidth;
-	Map map;
+	public Map map;
 	
 	public void attachToGameobject(GameObjects obj)
 	{
@@ -35,8 +35,8 @@ public class Renderer {
 		ArrayList<Wall> relevantWalls = new ArrayList<Wall>();
 		for (int i = 0; i < map.wallList.size(); i ++)
 		{
-			Vector vec1 = Vector.subtract(relevantWalls.get(i).getPos1(), position);
-			Vector vec2 = Vector.subtract(relevantWalls.get(i).getPos2(), position);
+			Vector vec1 = Vector.subtract(map.wallList.get(i).getPos1(), position);
+			Vector vec2 = Vector.subtract(map.wallList.get(i).getPos2(), position);
 			vec1 = Vector.rotateVector(vec1, - rotation);
 			vec2 = Vector.rotateVector(vec2, - rotation);
 			double angle1 = Math.atan(vec1.y / vec1.x) / Math.PI * 360;
@@ -55,6 +55,7 @@ public class Renderer {
 				relevantWalls.add(map.wallList.get(i));
 			}
 		}
+		System.out.println(relevantWalls.size());
 		
 		double[] renderedWallDistances = new double[screenWidth];
  		for (int i = 0; i < screenWidth; i ++)
@@ -80,7 +81,7 @@ public class Renderer {
 					}
 				}
 				renderedWallDistances[i] = nearestIntersection;
-				MainGUI.drawVerticalLine(i, (int)(screenHeight / nearestIntersection));
+				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / nearestIntersection));
 			}
 		}
 	}
