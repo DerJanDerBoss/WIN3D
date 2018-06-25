@@ -1,16 +1,36 @@
 package classes;//tests
 
 public class GameObjects {
-Vector pos;
-public GameObjects(){
+	Vector pos;
+	double rot;
+	public GameObjects(){
 	pos = new Vector(0, 0);
-}
-
-public Vector getPos(){
-	return pos;
-}
-public void movePos(Vector position){
-	pos.x = pos.x + position.x;
-	pos.y = pos.y + position.y;
-}
+	}
+	
+	public Vector getPos(){
+		return pos;
+	}
+	public void move(Vector deltaPosition){
+		pos.x = pos.x + deltaPosition.x;
+		pos.y = pos.y + deltaPosition.y;
+	}
+	public double getRot() 
+	{
+		return rot;
+	}
+	public void rotate(double deltaRotation) 
+	{
+		rot *= deltaRotation;
+		while(rot < 0 || rot > 360)
+		{
+			if(rot < 0) 
+			{
+				rot += 360;
+			}
+			else if(rot > 360)
+			{
+				rot -= 360;
+			}
+		}
+	}
 }

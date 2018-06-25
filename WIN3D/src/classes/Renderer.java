@@ -4,13 +4,32 @@ import java.util.*;
 public class Renderer {
 	Vector position;
 	double rotation;
+	GameObjects attachedGameObject;
 	double fieldOfViewDegrees;
 	double viewDistance;
 	int screenHeight;
 	int screenWidth;
 	Map map;
 	
-	public void renderImmage()
+	public void attachToGameobject(GameObjects obj)
+	{
+		attachedGameObject = obj;
+	}
+	public void updateTransform(Vector pos, double rot)
+	{
+		position = pos;
+		rotation = rot;
+	}
+	public void updateTransform()
+	{
+		if (attachedGameObject != null) 
+		{
+			position = attachedGameObject.getPos();
+			rotation = attachedGameObject.getRot();
+		}
+	}
+	
+	public void renderImage()
 	{
 		// Filterung der Wände die im sichtfeld liegen
 		ArrayList<Wall> relevantWalls = new ArrayList<Wall>();
