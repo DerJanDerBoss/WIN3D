@@ -40,6 +40,7 @@ public class FirstWindow extends JFrame {
 	/**
 	 * Create the frames.
 	 */
+	int i = 100;
 	public FirstWindow() 
 	{
 		
@@ -66,12 +67,14 @@ public class FirstWindow extends JFrame {
         //Knopf
         
 		JButton button = new JButton("Drück mich!");
-        field.add(button);
+		field.add(button);
         
 		button.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
+				i += 100;
+				repaint();
 				field.repaint();
 			}
 		});
@@ -82,7 +85,7 @@ public class FirstWindow extends JFrame {
 		public void paint(Graphics g) 
 		{
 	        Graphics2D g2 = (Graphics2D) g;
-	        Line2D lin = new Line2D.Float(100, 100, 250, 260);
+	        Line2D lin = new Line2D.Float(i, 100, 250, 260);
 	        g2.draw(lin);
 		}
 	
