@@ -61,7 +61,6 @@ public class FirstWindow extends JFrame {
 		JPanel field = new JPanel(); 
 		getContentPane().add(field);
         setSize(450,450);
-        field.setBackground(Color.BLUE);
         
         
         //Knopf
