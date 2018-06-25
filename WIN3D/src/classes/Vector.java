@@ -19,12 +19,12 @@ public class Vector {
 	{
 		return new Vector(vector1.x + vector2.x, vector1.y + vector2.y);
 	}
-	
+
 	public static Vector subtract(Vector vector1, Vector vector2)
 	{
 		return new Vector(vector1.x - vector2.x, vector1.y - vector2.y);
 	}
-	
+
 	public static Vector multiply(Vector vector, double multiplier)
 	{
 		return new Vector(vector.x * multiplier, vector.y * multiplier);
@@ -77,7 +77,7 @@ public class Vector {
 		}
 		return returnValue;
 	}
-	
+
 	public double getLength()
 	{
 		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
