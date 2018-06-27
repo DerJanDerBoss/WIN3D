@@ -18,9 +18,14 @@ public class Map {
 		boolean running = true;
 		boolean graphicalDebugMode = true;
 		addWall(2, -1, 2, 1);
+		addWall(2, 1, -2, 1);
+		addWall(-2, 1, 4, 1);
 		//while(running == true){
 			//player.move();
-		//mainGUI.drawVerticalLine(100, 100);
+			//mainGUI.clearLines();
+			//mainGUI.drawVerticalLine(100, 100);
+			//mainGUI.drawVerticalLine(200, 100);
+			camera.updateTransform(new Vector(-3, 0), camera.rotation);
 			camera.renderImage();
 			if(graphicalDebugMode)
 			{

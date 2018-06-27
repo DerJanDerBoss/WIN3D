@@ -1,14 +1,15 @@
 package classes;
 import java.util.*;
 
+
 public class Renderer {
-	Vector position = new Vector (0, 0);
-	double rotation;
+	public Vector position = new Vector (0, 0);
+	public double rotation;
 	GameObjects attachedGameObject;
-	double fieldOfViewDegrees = 90;
+	double fieldOfViewDegrees = 100;
 	double viewDistance;
-	int screenHeight;
-	int screenWidth;
+	int screenHeight = 450;
+	int screenWidth = 450;
 	public Map map;
 	
 	public void attachToGameobject(GameObjects obj)
@@ -55,20 +56,28 @@ public class Renderer {
 				relevantWalls.add(map.wallList.get(i));
 			}
 		}
-		System.out.println(relevantWalls.size());
+		System.out.println("relevant Walls: " + relevantWalls.size());
 		
 		double[] renderedWallDistances = new double[screenWidth];
+		map.mainGUI.clearLines();
  		for (int i = 0; i < screenWidth; i ++)
 		{
-			double angle = Math.asin((i - (screenWidth / 2))/ screenWidth * 2 * Math.sin(fieldOfViewDegrees / 2 / 360 * Math.PI));
-			Vector ray = Vector.multiply(Vector.rotateVector(new Vector(Math.cos(angle),Math.sin(angle)), rotation), viewDistance);
+			double angle = (i - (double)(screenWidth / 2)) / (double)screenWidth * fieldOfViewDegrees / 360 * 2 * Math.PI;
+			System.out.println(angle + " " + angle * 360 / 2 / Math.PI);
+			Vector ray = Vector.rotateVector(new Vector(Math.cos(angle),Math.sin(angle)), rotation);
 			ArrayList<Double> wallIntersections = new ArrayList<Double>();
 			for (int j = 0; j < relevantWalls.size(); j ++)
 			{
 				double[] intersection = Vector.checkForIntersections(position, ray, relevantWalls.get(j).getPos1(), Vector.subtract(relevantWalls.get(j).getPos2(), relevantWalls.get(j).getPos1()));
-				if (intersection[0] != 0 && intersection[1] >= 0 && intersection[2] >= 0 && intersection[2] >=1)
+				//System.out.println("row: " + i);
+				//System.out.println("collision?: " + intersection[0]);
+				//System.out.println("distance: " + intersection[1]);
+				//System.out.println("posOnWall: " +  intersection[2]);
+				
+				if (intersection[0] != 0 && intersection[1] >= 0 && intersection[2] >= 0 && intersection[2] <=1)
 				{
 					wallIntersections.add(intersection[1]);
+					//System.out.println("visible Wall");
 				}
 			}
 			if(wallIntersections.size() > 0){
@@ -81,7 +90,7 @@ public class Renderer {
 					}
 				}
 				renderedWallDistances[i] = nearestIntersection;
-				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / nearestIntersection));
+				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / (nearestIntersection - (0 * Math.abs(Math.cos(angle))))));
 			}
 		}
 	}

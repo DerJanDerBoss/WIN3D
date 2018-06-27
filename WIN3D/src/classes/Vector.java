@@ -1,6 +1,11 @@
 package classes;
 
 public class Vector {
+
+	public static void main(String[] args) 
+	{
+		System.out.println();
+	}
 	
 	public double x;
 	public double y;
@@ -14,8 +19,9 @@ public class Vector {
 	{
 		double x = vector.x;
 		double y = vector.y;
-		x -= Math.cos(degrees / 360 * 2 * Math.PI);
-		y += Math.sin(degrees / 360 * 2 * Math.PI);
+		double rad = (degrees / 360 * 2 * Math.PI);
+		x = Math.cos(Math.acos(x / vector.getLength()) + rad) * vector.getLength();
+		y = Math.sin(Math.asin(y / vector.getLength()) + rad) * vector.getLength();
 		return new Vector(x, y);
 	}
 	
@@ -38,8 +44,9 @@ public class Vector {
 	{
 		double[] returnValue = new double[3];
 		
+		returnValue[0] = 0;
 		//check if directions are parralel and don't have a length of 0
-		if(dir1.x/dir2.x != dir1.y/dir2.y && dir1.getLength() != 0 && dir2.getLength() != 0)
+		if(dir1.x/dir2.x != dir1.y/dir2.y && !(dir1.x == 0 && dir2.x == 0 || dir1.y == 0 && dir2.y == 0)&& dir1.getLength() != 0 && dir2.getLength() != 0)
 		{
 			if (dir1.x == 0)
 			{
@@ -47,10 +54,12 @@ public class Vector {
 				if(dir2.y == 0)
 				{
 					returnValue[1] = (pos2.y - pos1.y) / dir1.y;
+					returnValue[0] = 1;
 				}
 				else
 				{
 					returnValue[1] = (pos2.y - pos1.y + dir2.y * returnValue[2]) / dir1.y;
+					returnValue[0] = 1;
 				}
 			}
 			else if(dir1.y == 0)
@@ -59,25 +68,29 @@ public class Vector {
 				if(dir2.x == 0)
 				{
 					returnValue[1] = (pos2.x - pos1.x) / dir1.x;
+					returnValue[0] = 1;
 				}
 				else
 				{
 					returnValue[1] = (pos2.x - pos1.x + dir2.x * returnValue[2]) / dir1.x;
+					returnValue[0] = 1;
 				}
 			}
 			else if(dir2.x == 0)
 			{
 				returnValue[1] = (pos2.x - pos1.x) / dir1.x;
 				returnValue[2] = (pos2.y - pos1.y - dir1.y * returnValue[1]) / - dir2.y;
+				returnValue[0] = 1;
 			}
 			else if(dir2.y == 0)
 			{
 				returnValue[1] = (pos2.y - pos1.y) / dir1.y;
 				returnValue[2] = (pos2.x - pos1.x - dir1.x * returnValue[1]) / - dir2.x;
+				returnValue[0] = 1;
 			}
 			else
 			{
-				returnValue[1] = (pos2.y - pos2.x / (dir2.x / dir2.y)) / (dir1.y - dir1.x / (dir2.x / dir2.y));
+				returnValue[1] = ((pos2.y - pos1.y) - (pos2.x - pos1.x) / (dir2.x / dir2.y)) / (dir1.y - dir1.x / (dir2.x / dir2.y));
 				returnValue[2] = (pos2.y - pos1.y - dir1.y * returnValue[1]) / - dir2.y;
 			}
 		}

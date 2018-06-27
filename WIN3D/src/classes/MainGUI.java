@@ -1,6 +1,7 @@
 package classes;
 import java.awt.*;
 import java.awt.geom.Line2D;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -27,23 +28,24 @@ public class MainGUI extends JFrame{
         setSize(450,450);
         repaint();
 		Map map = new Map(this);
-
-
 	}
 	
-	static int posX;
-	static int height;
+	ArrayList<Line2D> lines = new ArrayList<Line2D>();
+	public void clearLines()
+	{
+		lines = new ArrayList<Line2D>();
+	}
 	public void drawVerticalLine(int position, int pHeight)
 	{
-		posX = position;
-		height = pHeight;
+		lines.add( new Line2D.Float(position, 225 + (int)(pHeight / 2), position, 225 - (int)(pHeight / 2)));
 		repaint();
 	}
 
 	public void paint (Graphics g) 
 	{
 		Graphics2D g2 = (Graphics2D) g;
-        Line2D lin = new Line2D.Float(posX, 100, posX, 260);
-        g2.draw(lin);
+		for(int i = 0; i < lines.size(); i ++) {
+			g2.draw(lines.get(i));
+        }
 	}
 }
