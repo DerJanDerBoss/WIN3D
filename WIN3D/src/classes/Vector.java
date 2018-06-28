@@ -4,7 +4,8 @@ public class Vector {
 
 	public static void main(String[] args) 
 	{
-		System.out.println();
+		System.out.println(Vector.rotateVector(new Vector(2, 0), -90).x + " " + Vector.rotateVector(new Vector(2, 0), -90).y);
+		System.out.println(Vector.rotateVector(new Vector(2, 0), 270).x + " " + Vector.rotateVector(new Vector(2, 0), 270).y);
 	}
 	
 	public double x;

@@ -33,7 +33,7 @@ public class MainGUI extends JFrame{
 		map = new Map(this);
 		camera = new Renderer();
 		camera.map = map;
-		camera.updateTransform(new Vector(-3, -2), camera.rotation);
+		camera.updateTransform(new Vector(0, 0), 0);
 	}
 	
 	ArrayList<Line2D> lines = new ArrayList<Line2D>();
@@ -53,6 +53,7 @@ public class MainGUI extends JFrame{
 	public void paint (Graphics g) 
 	{
 		map.performTick();
+		//camera.updateTransform(camera.position, camera.rotation + 0.1);
 		camera.renderImage(getHeight(), getWidth());
 		Graphics2D g2 = (Graphics2D) g;
 		for(int i = 0; i < lines.size(); i ++) {

@@ -18,6 +18,17 @@ public class Renderer {
 	{
 		position = pos;
 		rotation = rot;
+		while(rotation < 0 || rot > 360)
+		{
+			if(rotation < 0) 
+			{
+				rotation += 360;
+			}
+			else if(rotation > 360)
+			{
+				rotation -= 360;
+			}
+		}
 	}
 	public void updateTransform()
 	{
@@ -28,7 +39,7 @@ public class Renderer {
 		}
 	}
 	
-	public void renderImage(int screenHeight, int screenWidth)
+	public void renderImage(double screenHeight, double screenWidth)
 	{
 		// Filterung der Wände die im sichtfeld liegen
 		ArrayList<Wall> relevantWalls = new ArrayList<Wall>();
@@ -56,11 +67,13 @@ public class Renderer {
 		}
 		//System.out.println("relevant Walls: " + relevantWalls.size());
 		
-		double[] renderedWallDistances = new double[screenWidth];
+		double[] renderedWallDistances = new double[(int)screenWidth];
 		map.mainGUI.clearLines();
  		for (int i = 0; i < screenWidth; i ++)
 		{
-			double angle = (i - (double)(screenWidth / 2)) / (double)screenWidth * fieldOfViewDegrees / 360 * 2 * Math.PI;
+			//double angle = (i - (double)(screenWidth / 2)) / (double)screenWidth * fieldOfViewDegrees / 360 * 2 * Math.PI;
+			double angle = Math.asin(((i - screenWidth / 2) / screenWidth) * 2 * Math.sin(fieldOfViewDegrees / 2 / 360 * 2 * Math.PI));
+			System.out.println();
 			System.out.println(angle + " " + angle * 360 / 2 / Math.PI);
 			Vector ray = Vector.rotateVector(new Vector(Math.cos(angle),Math.sin(angle)), rotation);
 			ArrayList<Double> wallIntersections = new ArrayList<Double>();
@@ -90,7 +103,7 @@ public class Renderer {
 				renderedWallDistances[i] = nearestIntersection;
 				double projectionDistance = nearestIntersection - (0.1 * Math.cos(angle));
 				System.out.println(0.75f / (float)projectionDistance + " " + (float)projectionDistance);
-				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / projectionDistance), 0.75f / (float)projectionDistance * 5);
+				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / projectionDistance), 0.75f / (float)projectionDistance);
 			}
 		}
 	}
