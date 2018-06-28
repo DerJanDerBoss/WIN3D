@@ -5,7 +5,7 @@ public class Map {
 	public ArrayList<Wall> wallList = new ArrayList<Wall>();
 	public ArrayList<GameObjects> objectList = new ArrayList<GameObjects>();
 	Player player;
-	Renderer camera;
+	public Renderer camera;
 	public MainGUI mainGUI;
 	public Map(MainGUI pMainGUI){
 		wallList = new ArrayList<Wall>();
@@ -18,15 +18,16 @@ public class Map {
 		boolean running = true;
 		boolean graphicalDebugMode = true;
 		addWall(2, -1, 2, 1);
-		addWall(2, 1, -2, 1);
-		addWall(-2, 1, 4, 1);
+		addWall(2, 1, 0, 1);
+		addWall(2, -1, 4, -1);
+		addWall(4, -1, 4, -5);
 		//while(running == true){
 			//player.move();
 			//mainGUI.clearLines();
 			//mainGUI.drawVerticalLine(100, 100);
 			//mainGUI.drawVerticalLine(200, 100);
-			camera.updateTransform(new Vector(-3, 0), camera.rotation);
-			camera.renderImage();
+			camera.updateTransform(new Vector(-3, -2), camera.rotation);
+			camera.renderImage(450, 450);
 			if(graphicalDebugMode)
 			{
 				

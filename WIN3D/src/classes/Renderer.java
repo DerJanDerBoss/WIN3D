@@ -6,10 +6,8 @@ public class Renderer {
 	public Vector position = new Vector (0, 0);
 	public double rotation;
 	GameObjects attachedGameObject;
-	double fieldOfViewDegrees = 100;
+	double fieldOfViewDegrees = 60;
 	double viewDistance;
-	int screenHeight = 450;
-	int screenWidth = 450;
 	public Map map;
 	
 	public void attachToGameobject(GameObjects obj)
@@ -30,7 +28,7 @@ public class Renderer {
 		}
 	}
 	
-	public void renderImage()
+	public void renderImage(int screenHeight, int screenWidth)
 	{
 		// Filterung der Wände die im sichtfeld liegen
 		ArrayList<Wall> relevantWalls = new ArrayList<Wall>();
@@ -56,7 +54,7 @@ public class Renderer {
 				relevantWalls.add(map.wallList.get(i));
 			}
 		}
-		System.out.println("relevant Walls: " + relevantWalls.size());
+		//System.out.println("relevant Walls: " + relevantWalls.size());
 		
 		double[] renderedWallDistances = new double[screenWidth];
 		map.mainGUI.clearLines();
@@ -76,7 +74,7 @@ public class Renderer {
 				
 				if (intersection[0] != 0 && intersection[1] >= 0 && intersection[2] >= 0 && intersection[2] <=1)
 				{
-					wallIntersections.add(intersection[1]);
+					wallIntersections.add(intersection[1] * ray.getLength());
 					//System.out.println("visible Wall");
 				}
 			}
@@ -90,7 +88,9 @@ public class Renderer {
 					}
 				}
 				renderedWallDistances[i] = nearestIntersection;
-				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / (nearestIntersection - (0 * Math.abs(Math.cos(angle))))));
+				double projectionDistance = nearestIntersection - (0.1 * Math.cos(angle));
+				System.out.println(0.75f / (float)projectionDistance + " " + (float)projectionDistance);
+				map.mainGUI.drawVerticalLine(i, (int)(screenHeight / projectionDistance), 0.75f / (float)projectionDistance * 5);
 			}
 		}
 	}
