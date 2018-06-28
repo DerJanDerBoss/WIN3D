@@ -11,30 +11,18 @@ public class Map {
 		wallList = new ArrayList<Wall>();
 		objectList = new ArrayList<GameObjects>();
 		mainGUI = pMainGUI;
-		//player = new Player();
-		camera = new Renderer();
-		camera.map = this;
-		//camera.attachToGameobject(player);
-		boolean running = true;
-		boolean graphicalDebugMode = true;
 		addWall(2, -1, 2, 1);
 		addWall(2, 1, 0, 1);
 		addWall(2, -1, 4, -1);
 		addWall(4, -1, 4, -5);
-		//while(running == true){
-			//player.move();
-			//mainGUI.clearLines();
-			//mainGUI.drawVerticalLine(100, 100);
-			//mainGUI.drawVerticalLine(200, 100);
-			camera.updateTransform(new Vector(-3, -2), camera.rotation);
-			camera.renderImage(450, 450);
-			if(graphicalDebugMode)
-			{
-				
-			}
-		//}
 	}
-	
+	public void performTick()
+	{
+		for (int i = 0; i < objectList.size(); i ++)
+		{
+			objectList.get(i).update();
+		}
+	}
 	public void addWall(double pos1X, double pos1Y, double pos2X, double pos2Y)
 	{
 		wallList.add(new Wall(new Vector(pos1X, pos1Y), new Vector(pos2X, pos2Y)));

@@ -22,6 +22,7 @@ public class MainGUI extends JFrame{
 	}
 	
 	Map map;
+	Renderer camera;
 	
 	public MainGUI()
 	{
@@ -30,6 +31,9 @@ public class MainGUI extends JFrame{
         setSize(450,450);
         repaint();
 		map = new Map(this);
+		camera = new Renderer();
+		camera.map = map;
+		camera.updateTransform(new Vector(-3, -2), camera.rotation);
 	}
 	
 	ArrayList<Line2D> lines = new ArrayList<Line2D>();
@@ -48,7 +52,8 @@ public class MainGUI extends JFrame{
 
 	public void paint (Graphics g) 
 	{
-		map.camera.renderImage(getHeight(), getWidth());
+		map.performTick();
+		camera.renderImage(getHeight(), getWidth());
 		Graphics2D g2 = (Graphics2D) g;
 		for(int i = 0; i < lines.size(); i ++) {
 			g2.setColor(Color.getHSBColor(0f, 0f, colors.get(i)));

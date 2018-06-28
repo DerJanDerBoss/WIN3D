@@ -7,6 +7,11 @@ public class GameObjects {
 	pos = new Vector(0, 0);
 	}
 	
+	public void update()
+	{
+		
+	}
+	
 	public Vector getPos(){
 		return pos;
 	}
